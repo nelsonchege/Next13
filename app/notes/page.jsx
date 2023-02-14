@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CreateNote from "./CreateNote";
 import styles from "./Notes.module.css";
 
 async function getNotes() {
@@ -13,10 +14,14 @@ export default async function NotesPage() {
   const notes = await getNotes();
 
   return (
-    <div className={styles.grid}>
-      {notes?.map((note) => (
-        <Note key={note.id} note={note} />
-      ))}
+    <div>
+      <h1>Notes</h1>
+      <div className={styles.grid}>
+        {notes?.map((note) => (
+          <Note key={note.id} note={note} />
+        ))}
+      </div>
+      <CreateNote />
     </div>
   );
 }
